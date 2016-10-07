@@ -34,6 +34,20 @@ var TasksComponent = (function () {
             _this.title = '';
         });
     };
+    TasksComponent.prototype.deleteTask = function (id) {
+        var tasks = this.tasks;
+        console.log(tasks);
+        this.taskService.deleteTask(id)
+            .subscribe(function (data) {
+            if (data.n == 1) {
+                for (var i = 0; i < tasks.length; i++) {
+                    if (tasks[i]._id == id) {
+                        tasks.splice(i, 1);
+                    }
+                }
+            }
+        });
+    };
     TasksComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
