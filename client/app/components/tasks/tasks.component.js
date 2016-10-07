@@ -9,20 +9,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var task_service_1 = require('./services/task.service');
-var AppComponent = (function () {
-    function AppComponent() {
+var task_service_1 = require('../../services/task.service');
+var TasksComponent = (function () {
+    function TasksComponent(taskService) {
+        this.taskService = taskService;
+        this.taskService.getTasks()
+            .subscribe(function (task) {
+            console.log(task);
+        });
     }
-    AppComponent = __decorate([
+    TasksComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
-            selector: 'my-app',
-            templateUrl: 'app.component.html',
-            providers: [task_service_1.TaskService]
+            selector: 'tasks',
+            templateUrl: 'tasks.component.html'
         }), 
-        __metadata('design:paramtypes', [])
-    ], AppComponent);
-    return AppComponent;
+        __metadata('design:paramtypes', [task_service_1.TaskService])
+    ], TasksComponent);
+    return TasksComponent;
 }());
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+exports.TasksComponent = TasksComponent;
+//# sourceMappingURL=tasks.component.js.map
